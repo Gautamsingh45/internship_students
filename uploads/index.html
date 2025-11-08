@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn HTML</title>
+<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon.png" />
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  #syllabus {
+    width: 25%;
+    min-width: 220px;
+    background: #f9f9f9;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+
+  #syllabus h2 {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .module-header {
+    padding: 10px;
+    margin: 5px 0;
+    background: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s;
+  }
+
+  .module-header:hover {
+    background: #ddd;
+  }
+
+  .module-content {
+    display: none;
+    padding-left: 15px;
+    margin: 5px 0;
+  }
+
+  .module-content div {
+    padding: 5px 0;
+    cursor: pointer;
+  }
+
+  .module-content div:hover {
+    color: #007BFF;
+  }
+
+  /* Content iframe */
+  #content {
+    flex-grow: 1;
+    border: none;
+    height: 100%;
+    overflow: auto;
+  }
+
+  /* Sidebar toggle button for phones */
+  #toggle-btn {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  /* Responsive for tablets and mobile */
+  @media (max-width: 992px) {
+    body {
+      flex-direction: column;
+    }
+    #syllabus {
+      width: 100%;
+      height: 250px;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+    #content {
+      width: 100%;
+      height: calc(100vh - 250px);
+    }
+  }
+
+  @media (max-width: 576px) {
+    #toggle-btn {
+      display: block;
+    }
+    #syllabus {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      z-index: 999;
+      transform: translateX(-100%);
+      box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    }
+    #syllabus.show {
+      transform: translateX(0);
+    }
+    #content {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Sidebar Toggle Button -->
+
+
+<button id="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+<!-- Sidebar -->
+<div id="syllabus">
+  <h2>HTML Syllabus</h2>
+
+  <div class="module-header" onclick="toggleModule('module1')">Module 1: SQL Basics</div>
+  <div class="module-content" id="module1">
+    <div onclick="loadModule('module1.html')">Open Module 1</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module2')">Module 2: Table Operations (DDL)</div>
+  <div class="module-content" id="module2">
+    <div onclick="loadModule('module2.html')">Open Module 2</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module3')">Module 3: Data Insertion (DML)</div>
+  <div class="module-content" id="module3">
+    <div onclick="loadModule('module3.html')">Open Module 3</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module4')">Module 4: Data Modification (DML)</div>
+  <div class="module-content" id="module4">
+    <div onclick="loadModule('module4.html')">Open Module 4</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module5')">Module 5: Querying Data (DQL)</div>
+  <div class="module-content" id="module5">
+    <div onclick="loadModule('module5.html')">Open Module 5</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module6')">Module 6: String Functions</div>
+  <div class="module-content" id="module6">
+    <div onclick="loadModule('module6.html')">Open Module 6</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module7')">Module 7:  Aggregate Functions</div>
+  <div class="module-content" id="module7">
+    <div onclick="loadModule('module7.html')">Open Module 7</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module8')">Module 8: Subqueries</div>
+  <div class="module-content" id="module8">
+    <div onclick="loadModule('module8.html')">Open Module 8</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module9')">Module 9: Grouping & Aggregation</div>
+  <div class="module-content" id="module9">
+    <div onclick="loadModule('module9.html')">Open Module 9</div>
+  </div>
+
+  <div class="module-header" onclick="toggleModule('module10')">Module 10: Sorting & Pagination</div>
+  <div class="module-content" id="module10">
+    <div onclick="loadModule('module10.html')">Open Module 10</div>
+  </div>
+  
+
+</div>
+
+<!-- Content Area -->
+<iframe id="content" src=""></iframe>
+</div>
+<script>
+function toggleModule(id){
+  const module = document.getElementById(id);
+  module.style.display = (module.style.display === 'block') ? 'none' : 'block';
+}
+
+function loadModule(file){
+  document.getElementById('content').src = file;
+
+  // Hide sidebar automatically on small screens after selecting a module
+  if(window.innerWidth <= 576){
+    document.getElementById('syllabus').classList.remove('show');
+  }
+}
+
+function toggleSidebar(){
+  document.getElementById('syllabus').classList.toggle('show');
+}
+
+// Load Module 1 by default
+window.addEventListener('DOMContentLoaded', () => {
+  loadModule('module1.html');
+});
+</script>
+
+
+
+</body>
+</html>
