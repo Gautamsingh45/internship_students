@@ -1,0 +1,42 @@
+
+HP@DESKTOP-NUA11VQ MINGW64 ~
+$ cd projects
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects
+$ cd projects/fresh-projects
+bash: cd: projects/fresh-projects: No such file or directory
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects
+$ ^c
+d projects/fresh-projects
+bash: d: command not found
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects
+$ cd fresh-project
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project (master)
+$ ls
+fresh-project/
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project (master)
+$ ls -al
+total 4
+drwxr-xr-x 1 HP 197121 0 Dec  6 21:27 ./
+drwxr-xr-x 1 HP 197121 0 Dec  6 21:16 ../
+drwxr-xr-x 1 HP 197121 0 Dec  6 21:24 .git/
+drwxr-xr-x 1 HP 197121 0 Dec  6 21:29 fresh-project/
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project (master)
+$ cd .git
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project/.git (GIT_DIR!)
+$ ls
+HEAD    description  info/     refs/
+config  hooks/       objects/
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project/.git (GIT_DIR!)
+$ cd ..
+
+HP@DESKTOP-NUA11VQ MINGW64 ~/projects/fresh-project (master)
+$ pwd
+/c/Users/HP/projects/fresh-project
